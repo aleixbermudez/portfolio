@@ -1,3 +1,7 @@
+# My Portfolio
+
+This is the initial commit for my personal portfolio.
+
 # Astro Starter Kit: Basics
 
 ```sh
