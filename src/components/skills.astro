@@ -1,13 +1,24 @@
 ---
-// Skills.astro
-const skills = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Astro", "Tailwind", "Node.js", "Python", "Java", "SQL", "Bootstrap"];
+const skills = [
+  "HTML", "CSS", "JavaScript", "TypeScript", "React", "Astro", 
+  "Tailwind", "Node.js", "Python", "Java", "SQL", "Bootstrap"
+];
 ---
-<section id="skills" class="py-20 bg-gray-50">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h3 class="text-3xl font-bold text-gray-800 mb-12">Habilidades</h3>
-    <div class="flex flex-wrap justify-center gap-4">
+
+<section id="skills" class="py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+        Habilidades
+      </h1>
+    <p class="text-gray-600 text-lg mb-12">
+      Tecnologías y herramientas con las que trabajo para construir productos digitales modernos y escalables.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
       {skills.map(skill => (
-        <span class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full font-medium">{skill}</span>
+        <span class="px-6 py-3 text-base md:text-lg bg-gray-100 text-gray-800 rounded-xl border border-gray-200 font-medium hover:bg-gray-900 hover:text-white transition-all duration-300">
+          {skill}
+        </span>
       ))}
     </div>
   </div>

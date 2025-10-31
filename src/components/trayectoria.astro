@@ -1,31 +1,31 @@
 ---
 const timeline = [
-    {
+  {
     year: "2025 - Actualidad",
-    title: "Máster FP Inteligencía Artificial y Big Data",
+    title: "Máster FP Inteligencia Artificial y Big Data",
     description:
       "Actualmente estoy cursando un máster en Inteligencia Artificial y Big Data, profundizando en el análisis de datos, aprendizaje automático y soluciones innovadoras. Esta formación me permite combinar la tecnología con la creatividad para afrontar retos del mundo digital en constante evolución.",
   },
   {
     year: "Abril - Junio 2025",
-    title: "Prácticas de Desarrollo Web ",
+    title: "Prácticas de Desarrollo Web",
     description:
       "Durante mis prácticas en Marketeck participé en proyectos reales de desarrollo web, aprendiendo a crear y optimizar sitios web, trabajar en equipo y aplicar buenas prácticas de programación. Esta experiencia reforzó mis habilidades técnicas y mi capacidad para enfrentar retos en entornos profesionales.",
   },
   {
-    year: "2023-2025",
+    year: "2023 - 2025",
     title: "Ciclo Superior de Aplicaciones Web",
     description:
       "Completé un ciclo superior en Desarrollo Web, donde adquirí conocimientos sólidos en programación, diseño de interfaces y gestión de proyectos digitales. Esta etapa consolidó mi pasión por el desarrollo web y me preparó para enfrentar retos profesionales en el mundo digital.",
   },
   {
-    year: "2022 — 2023",
+    year: "2022 - 2023",
     title: "1º Año Diseño y Producción de Videojuegos",
     description:
       "Exploré el mundo del desarrollo de videojuegos, adquiriendo nociones de diseño, programación y producción. Aunque descubrí que no era mi camino definitivo, esta experiencia me permitió ampliar mis habilidades y confirmar hacia dónde quería orientar mi carrera.",
   },
   {
-    year: "2020 — 2022",
+    year: "2020 - 2022",
     title: "Bachillerato",
     description:
       "Durante el bachillerato consolidé mis conocimientos básicos y desarrollé habilidades clave como la disciplina, la curiosidad y la capacidad de aprendizaje constante, que hoy aplico en mi crecimiento profesional.",
@@ -35,60 +35,60 @@ const timeline = [
 
 <section id="trajectory" class="bg-white py-32 px-6 md:px-24">
   <div class="max-w-5xl mx-auto">
-    <!-- Título -->
     <div class="text-center mb-24">
-      <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 tracking-tight">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
         Mi Trayectoria
-      </h2>
+      </h1>
       <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-        Un recorrido en constante evolución — aprendiendo, experimentando y construyendo cosas que me apasionan.
+        Un recorrido en constante evolución — aprendiendo, experimentando y construyendo con propósito.
       </p>
     </div>
 
-    <!-- Timeline moderna -->
     <div class="relative">
-      <!-- Línea -->
-      <div class="hidden md:block absolute left-1/2 top-0 w-[2px] h-full bg-gradient-to-b from-indigo-200 via-indigo-400 to-indigo-200 transform -translate-x-1/2"></div>
+      <div class="hidden md:block absolute left-1/2 top-0 w-px h-full bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 -translate-x-1/2"></div>
 
       <div class="flex flex-col gap-24">
         {timeline.map((item, i) => (
           <div class={`relative flex flex-col md:flex-row ${i % 2 === 0 ? "md:justify-start" : "md:justify-end"} items-center md:items-start`}>
             
-            <!-- Punto -->
-            <div class={`hidden md:block absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-indigo-600 rounded-full shadow-lg ${i === 0 ? "pulse" : ""}`}></div>
+            <!-- Nodo -->
+            <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gray-900 rounded-full ring-4 ring-white"></div>
 
-            <!-- Contenido -->
+            <!-- Tarjeta -->
             <div class={`md:w-1/2 mt-10 md:mt-0 ${i % 2 === 0 ? "md:pr-16 text-right" : "md:pl-16 text-left"} text-center md:text-inherit`}>
-              <span class="text-indigo-600 font-semibold text-lg block mb-1">{item.year}</span>
-              <h3 class="text-3xl font-bold text-gray-900">{item.title}</h3>
-              <p class="text-gray-600 text-lg mt-4 leading-relaxed max-w-md mx-auto md:mx-0">{item.description}</p>
+              <span class="text-gray-500 font-medium text-sm uppercase tracking-wide">{item.year}</span>
+              <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mt-2">{item.title}</h3>
+              <p class="text-gray-600 text-base mt-4 leading-relaxed max-w-md mx-auto md:mx-0">{item.description}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <!-- Línea para móvil -->
-      <div class="md:hidden mt-16 w-[2px] mx-auto h-full bg-gradient-to-b from-indigo-200 via-indigo-400 to-indigo-200"></div>
+      <div class="md:hidden mt-16 w-px mx-auto h-full bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200"></div>
     </div>
   </div>
 </section>
 
 <style>
-  @keyframes floatUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  #trajectory div[astro-island] > * {
-    animation: floatUp 0.8s ease-out both;
+  #trajectory [data-animate] {
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out forwards;
   }
 
-  /* Punto animado */
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); opacity: 0.8; }
-  }
-  .pulse {
-    animation: pulse 2s infinite ease-in-out;
-  }
+  #trajectory [data-animate]:nth-child(1) { animation-delay: 0.1s; }
+  #trajectory [data-animate]:nth-child(2) { animation-delay: 0.2s; }
+  #trajectory [data-animate]:nth-child(3) { animation-delay: 0.3s; }
+  #trajectory [data-animate]:nth-child(4) { animation-delay: 0.4s; }
+  #trajectory [data-animate]:nth-child(5) { animation-delay: 0.5s; }
 </style>
