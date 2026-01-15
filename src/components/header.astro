@@ -1,29 +1,41 @@
-<header class="fixed w-full bg-white/70 backdrop-blur-xl z-50 border-b border-gray-200/60 transition-all duration-300">
-  <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="text-2xl font-semibold tracking-tight text-gray-900">
-      <span class="text-gray-900">aleixbermudez</span>
-    </h1>
+<header class="fixed w-full z-[100] transition-all duration-500 py-4 md:py-6" id="navbar">
+  <nav class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="bg-zinc-900/60 backdrop-blur-xl border border-white/5 rounded-full px-5 md:px-6 py-2 md:py-3 flex justify-between items-center shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+      
+      <a href="#" class="group flex items-center gap-2">
+        <span class="text-white font-black tracking-tighter text-lg md:text-xl uppercase italic group-hover:text-blue-500 transition-colors">
+          Aleix<span class="text-blue-600 not-italic">.</span>
+        </span>
+      </a>
 
-    <ul class="hidden md:flex space-x-8 text-gray-700 font-medium">
-      <li><a href="#projects" class="hover:text-gray-900 transition-colors duration-200">Proyectos</a></li>
-      <li><a href="#skills" class="hover:text-gray-900 transition-colors duration-200">Habilidades</a></li>
-      <li><a href="#trajectory" class="hover:text-gray-900 transition-colors duration-200">Trayectoria</a></li>
-      <li><a href="#contact" class="hover:text-gray-900 transition-colors duration-200">Contacto</a></li>
-    </ul>
+      <ul class="hidden md:flex items-center space-x-1">
+        <li><a href="#projects" class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-all">Proyectos</a></li>
+        <li><a href="#skills" class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-all">Skills</a></li>
+        <li><a href="#trajectory" class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-all">Trayectoria</a></li>
+  
+        <li>
+          <a href="#contact" class="ml-4 px-6 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
+            Contacto
+          </a>
+        </li>
+      </ul>
 
-    <button id="burger" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none">
-      <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+      <button id="burger" class="md:hidden p-3 -mr-2 text-zinc-400 hover:text-white focus:outline-none z-[110] relative">
+        <svg id="burger-icon" class="w-6 h-6 transition-transform duration-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path id="path1" class="transition-all duration-300" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16" />
+          <path id="path2" class="transition-all duration-300" stroke-linecap="round" stroke-linejoin="round" d="M4 12h16" />
+          <path id="path3" class="transition-all duration-300" stroke-linecap="round" stroke-linejoin="round" d="M4 18h16" />
+        </svg>
+      </button>
+    </div>
   </nav>
 
-  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200/70 shadow-lg">
-    <ul class="flex flex-col space-y-4 px-6 py-6 text-gray-700 font-medium text-lg">
-      <li><a href="#projects" class="hover:text-gray-900 transition">Proyectos</a></li>
-      <li><a href="#skills" class="hover:text-gray-900 transition">Habilidades</a></li>
-      <li><a href="#trajectory" class="hover:text-gray-900 transition">Trayectoria</a></li>
-      <li><a href="#contact" class="hover:text-gray-900 transition">Contacto</a></li>
+  <div id="mobile-menu" class="fixed inset-0 bg-[#030303] z-[105] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500 translate-y-[-10px]">
+    <ul class="text-center space-y-8">
+      <li><a href="#projects" class="text-3xl font-black text-white uppercase tracking-tighter hover:text-blue-500 transition-colors">Proyectos</a></li>
+      <li><a href="#skills" class="text-3xl font-black text-white uppercase tracking-tighter hover:text-blue-500 transition-colors">Skills</a></li>
+      <li><a href="#trajectory" class="text-3xl font-black text-white uppercase tracking-tighter hover:text-blue-500 transition-colors">Trayectoria</a></li>
+      <li><a href="#contact" class="text-3xl font-black text-blue-500 uppercase tracking-tighter">Contacto</a></li>
     </ul>
   </div>
 </header>
@@ -31,23 +43,54 @@
 <script>
   const burger = document.getElementById("burger");
   const menu = document.getElementById("mobile-menu");
+  const navbar = document.getElementById("navbar");
+  const path1 = document.getElementById("path1");
+  const path2 = document.getElementById("path2");
+  const path3 = document.getElementById("path3");
 
-  burger.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-    menu.classList.toggle("animate-fade-in");
+  // Scroll: Reducción más agresiva en móvil
+  window.addEventListener("scroll", () => {
+    const isMobile = window.innerWidth < 768;
+    if (window.scrollY > 20) {
+      navbar.classList.add(isMobile ? "py-2" : "py-3");
+      navbar.classList.remove(isMobile ? "py-4" : "py-6");
+    } else {
+      navbar.classList.add(isMobile ? "py-4" : "py-6");
+      navbar.classList.remove(isMobile ? "py-2" : "py-3");
+    }
   });
 
+  // Toggle Menú Mobile con animación de icono
+  burger.addEventListener("click", () => {
+    const isOpen = !menu.classList.contains("opacity-0");
+    
+    if (isOpen) {
+      // Cerrar
+      menu.classList.add("opacity-0", "pointer-events-none", "translate-y-[-10px]");
+      document.body.style.overflow = "auto";
+      // Icono a hamburguesa
+      path1.setAttribute("d", "M4 6h16");
+      path2.style.opacity = "1";
+      path3.setAttribute("d", "M4 18h16");
+    } else {
+      // Abrir
+      menu.classList.remove("opacity-0", "pointer-events-none", "translate-y-[-10px]");
+      document.body.style.overflow = "hidden";
+      // Icono a "X"
+      path1.setAttribute("d", "M6 18L18 6M6 6l12 12");
+      path2.style.opacity = "0";
+      path3.setAttribute("d", "M6 18L18 6M6 6l12 12");
+    }
+  });
+
+  // Cerrar menú al hacer click en un link
   menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => menu.classList.add("hidden"));
+    link.addEventListener("click", () => {
+      menu.classList.add("opacity-0", "pointer-events-none", "translate-y-[-10px]");
+      document.body.style.overflow = "auto";
+      path1.setAttribute("d", "M4 6h16");
+      path2.style.opacity = "1";
+      path3.setAttribute("d", "M4 18h16");
+    });
   });
 </script>
-
-<style>
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in {
-    animation: fadeIn 0.25s ease-out forwards;
-  }
-</style>

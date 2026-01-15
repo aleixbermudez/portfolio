@@ -3,52 +3,98 @@ import '../styles/global.css'
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/images/favicon.png" />
-		<meta name="description" content="Portfolio de Aleix Bermúdez. Desarrollador Web Full Stack."/>
-		<meta name="author" content="Aleix Bermúdez" />
-		<meta name="generator" content={Astro.generator} />
+<html lang="es" class="scroll-smooth"> <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/images/favicon.png" />
+        <meta name="description" content="Portfolio de Aleix Bermúdez. Desarrollador Web Full Stack."/>
+        <meta name="author" content="Aleix Bermúdez" />
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-		<!-- Open Graph -->
+        <title>Aleix Bermúdez | Full Stack Dev</title>
+        
+        </head>
+    <body class="bg-[#030303] antialiased selection:bg-blue-500/30 selection:text-blue-200">
+        <slot />
+        <div id="toast" class="fixed bottom-6 right-6 z-50 hidden">
+            <div class="bg-zinc-900 border border-zinc-800 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 animate-toast">
+                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span id="toast-text" class="text-sm font-medium">
+                Mensaje enviado correctamente
+                </span>
+            </div>
+        </div>
 
-		<meta property="og:title" content="Aleix Bermúdez">
-		<meta property="og:description" content="Portfolio de Aleix Bermúdez. Desarrollador Web Full Stack.">
-		<meta property="og:image" content="https://aleixbermudez.com/images/perfil2.avif">
-		<meta property="og:url" content="https://aleixbermudez.com">
-		<meta property="og:type" content="website">
+        <style>
+            @keyframes toastIn {
+                from { opacity: 0; transform: translateY(20px) scale(.95); }
+                to   { opacity: 1; transform: translateY(0) scale(1); }
+            }
 
-		<!-- Facebook Meta Tags -->
-		<meta property="og:url" content="https://aleixbermudez.com">
-		<meta property="og:type" content="website">
-		<meta property="og:title" content="Aleix Bermúdez">
-		<meta property="og:description" content="Portfolio de Aleix Bermúdez. Desarrollador Web Full Stack.">
-		<meta property="og:image" content="https://aleixbermudez.com/images/perfil2.avif">
+            .animate-toast {
+                animation: toastIn .4s ease-out;
+            }
+        </style>
 
-		<!-- Twitter Meta Tags -->
-		<meta name="twitter:card" content="summary_large_image">
-		<meta property="twitter:domain" content="aleixbermudez.com">
-		<meta property="twitter:url" content="https://aleixbermudez.com">
-		<meta name="twitter:title" content="Aleix Bermúdez">
-		<meta name="twitter:description" content="Portfolio de Aleix Bermúdez. Desarrollador Web Full Stack.">
-		<meta name="twitter:image" content="https://aleixbermudez.com/images/perfil2.avif">
-
-
-
-		<title>aleixbermudez</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global> /* Usamos is:global para que afecte a toda la web */
+    :root {
+        --bg-color: #030303;
+    }
+
+    html {
+        background-color: var(--bg-color);
+        /* Quitamos el height: 100% */
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh; /* Permite que crezca, pero asegura el mínimo */
+        width: 100%;
+        overflow-x: hidden; /* Evita el scroll horizontal accidental en móviles */
+        font-family: 'Inter', sans-serif;
+        color: white;
+    }
+
+    /* Mejora del scrollbar para que sea minimalista como el diseño */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #030303;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #222;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #333;
+    }
 </style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('section').forEach(section => {
+    section.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-1000');
+    observer.observe(section);
+  });
+</script>

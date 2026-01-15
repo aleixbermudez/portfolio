@@ -1,92 +1,96 @@
 ---
 const timeline = [
   {
-    year: "2025 - Actualidad",
-    title: "Máster FP Inteligencia Artificial y Big Data",
-    description:
-      "Actualmente estoy cursando un máster en Inteligencia Artificial y Big Data, profundizando en el análisis de datos, aprendizaje automático y soluciones innovadoras. Esta formación me permite combinar la tecnología con la creatividad para afrontar retos del mundo digital en constante evolución.",
+    year: "2025",
+    status: "Presente",
+    title: "IA & Big Data Specialist",
+    institution: "Máster FP",
+    description: "Especialización en Machine Learning y arquitecturas de datos masivas. Fusionando IA con desarrollo Full Stack para soluciones predictivas."
   },
   {
-    year: "Abril - Junio 2025",
-    title: "Prácticas de Desarrollo Web",
-    description:
-      "Durante mis prácticas en Marketeck participé en proyectos reales de desarrollo web, aprendiendo a crear y optimizar sitios web, trabajar en equipo y aplicar buenas prácticas de programación. Esta experiencia reforzó mis habilidades técnicas y mi capacidad para enfrentar retos en entornos profesionales.",
+    year: "2025",
+    status: "Internship",
+    title: "Web Developer",
+    institution: "Marketeck",
+    description: "Desarrollo de ecosistemas web optimizados. Implementación de buenas prácticas y flujos de trabajo profesionales en proyectos reales."
   },
   {
-    year: "2023 - 2025",
-    title: "Ciclo Superior de Aplicaciones Web",
-    description:
-      "Completé un ciclo superior en Desarrollo Web, donde adquirí conocimientos sólidos en programación, diseño de interfaces y gestión de proyectos digitales. Esta etapa consolidó mi pasión por el desarrollo web y me preparó para enfrentar retos profesionales en el mundo digital.",
+    year: "2023",
+    status: "Graduado",
+    title: "Full Stack Developer",
+    institution: "Ciclo Superior DAW",
+    description: "Formación intensiva en el ecosistema moderno de aplicaciones web, desde la arquitectura de bases de datos hasta el despliegue."
   },
   {
-    year: "2022 - 2023",
-    title: "1º Año Diseño y Producción de Videojuegos",
-    description:
-      "Exploré el mundo del desarrollo de videojuegos, adquiriendo nociones de diseño, programación y producción. Aunque descubrí que no era mi camino definitivo, esta experiencia me permitió ampliar mis habilidades y confirmar hacia dónde quería orientar mi carrera.",
-  },
-  {
-    year: "2020 - 2022",
-    title: "Bachillerato",
-    description:
-      "Durante el bachillerato consolidé mis conocimientos básicos y desarrollé habilidades clave como la disciplina, la curiosidad y la capacidad de aprendizaje constante, que hoy aplico en mi crecimiento profesional.",
-  },
+    year: "2022",
+    status: "Exploración",
+    title: "Game Design & Dev",
+    institution: "1º Grado Videojuegos",
+    description: "Primer contacto con la lógica de programación compleja y el diseño de experiencias interactivas."
+  }
 ];
 ---
 
-<section id="trajectory" class="bg-white py-32 px-6 md:px-24">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-24">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-        Mi Trayectoria
-      </h1>
-      <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-        Un recorrido en constante evolución — aprendiendo, experimentando y construyendo con propósito.
-      </p>
+<section id="trayectoria" class="bg-[#030303] py-20 md:py-32 px-6 md:px-24 border-t border-zinc-900">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="mb-16 md:mb-24 text-center md:text-left">
+      <p class="text-blue-500 font-mono text-[10px] md:text-sm tracking-[0.3em] uppercase mb-4">Timeline</p>
+      <h2 class="text-5xl md:text-8xl font-black tracking-tighter text-white uppercase leading-none">
+        Trayectoria <br/> <span class="text-zinc-800">& Evolución</span>
+      </h2>
     </div>
 
     <div class="relative">
-      <div class="hidden md:block absolute left-1/2 top-0 w-px h-full bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 -translate-x-1/2"></div>
+      <div class="absolute left-0 md:left-1/2 top-0 w-[1px] h-full bg-gradient-to-b from-blue-500/50 via-zinc-800 to-transparent -translate-x-1/2"></div>
 
-      <div class="flex flex-col gap-24">
+      <div class="space-y-12 md:space-y-24">
         {timeline.map((item, i) => (
-          <div class={`relative flex flex-col md:flex-row ${i % 2 === 0 ? "md:justify-start" : "md:justify-end"} items-center md:items-start`}>
+          <div class="relative flex flex-col md:flex-row items-start md:items-center group">
             
-            <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gray-900 rounded-full ring-4 ring-white"></div>
+            <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-zinc-950 border border-zinc-700 rounded-full z-10 group-hover:bg-blue-500 group-hover:border-blue-400 transition-all duration-500 group-hover:scale-150"></div>
 
-            <div class={`md:w-1/2 mt-10 md:mt-0 ${i % 2 === 0 ? "md:pr-16 text-right" : "md:pl-16 text-left"} text-center md:text-inherit`}>
-              <span class="text-gray-500 font-medium text-sm uppercase tracking-wide">{item.year}</span>
-              <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mt-2">{item.title}</h3>
-              <p class="text-gray-600 text-base mt-4 leading-relaxed max-w-md mx-auto md:mx-0">{item.description}</p>
+            <div class="md:w-1/2 w-full md:pr-16 md:text-right pl-8 md:pl-0 mb-4 md:mb-0">
+              <div class="flex flex-col md:items-end">
+                <span class="text-4xl md:text-7xl font-black text-zinc-800 md:text-zinc-900 group-hover:text-zinc-700 transition-colors duration-500 leading-none">
+                  {item.year}
+                </span>
+                <span class="text-blue-500 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.3em] mt-1 md:mt-2">
+                  {item.status}
+                </span>
+              </div>
+            </div>
+
+            <div class="md:w-1/2 w-full md:pl-16 pl-8">
+              <div class="p-6 md:p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 backdrop-blur-sm group-hover:border-zinc-700 transition-all duration-500 shadow-xl">
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
+                  {item.title}
+                </h3>
+                <p class="text-zinc-500 font-medium text-[11px] md:text-sm mb-3 md:mb-4 uppercase tracking-wide">
+                  {item.institution}
+                </p>
+                <p class="text-zinc-400 text-sm md:text-base leading-relaxed font-light">
+                  {item.description}
+                </p>
+              </div>
             </div>
           </div>
         ))}
       </div>
+    </div>
 
-      <div class="md:hidden mt-16 w-px mx-auto h-full bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200"></div>
+    <div class="mt-24 text-center px-4">
+      <p class="text-zinc-600 text-xs md:text-sm italic font-light">
+        Formación base en Bachillerato (2020-2022) centrada en disciplina y curiosidad constante.
+      </p>
     </div>
   </div>
 </section>
 
 <style>
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Animación suave para la entrada de las tarjetas si quieres añadir scroll-reveal más adelante */
+  #trajectory .group {
+    opacity: 1;
+    transition: all 0.6s ease-out;
   }
-
-  #trajectory [data-animate] {
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out forwards;
-  }
-
-  #trajectory [data-animate]:nth-child(1) { animation-delay: 0.1s; }
-  #trajectory [data-animate]:nth-child(2) { animation-delay: 0.2s; }
-  #trajectory [data-animate]:nth-child(3) { animation-delay: 0.3s; }
-  #trajectory [data-animate]:nth-child(4) { animation-delay: 0.4s; }
-  #trajectory [data-animate]:nth-child(5) { animation-delay: 0.5s; }
 </style>

@@ -1,20 +1,114 @@
-<section id="contact" class="py-32 bg-gradient-to-b from-white to-gray-50">
-  <div class="max-w-2xl mx-auto px-6 text-center">
-    <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-      Contacto
-    </h2>
-    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-10">
-      ¿Quieres colaborar, hablar sobre un proyecto o simplemente saludar?  
-      Estaré encantado de leerte.
-    </p>
+<section id="contacto" class="relative py-20 md:py-32 bg-[#030303] overflow-hidden border-t border-zinc-900">
+  
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
+    <div class="absolute bottom-[-5%] left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[150px] md:h-[300px] bg-blue-600/10 rounded-full blur-[80px] md:blur-[120px]"></div>
+  </div>
 
-    <a href="mailto:aleixbermudez19@gmail.com"
-       class="inline-block bg-gray-900 text-white text-lg font-medium px-10 py-4 rounded-xl hover:bg-gray-800 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm">
-      Enviar mensaje
-    </a>
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    
+    <div class="text-center mb-12 md:mb-16 space-y-4">
+      <p class="text-blue-500 font-mono text-[10px] md:text-sm tracking-[0.3em] uppercase opacity-80">Get in touch</p>
+      <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase leading-none">
+        ¿Hablamos<span class="text-zinc-700">?</span>
+      </h2>
+      <p class="text-zinc-500 text-base md:text-lg font-light max-w-md mx-auto px-4">
+        Disponible para nuevos proyectos y colaboraciones estratégicas.
+      </p>
+    </div>
 
-    <p class="text-gray-400 text-sm mt-8">
-      o escríbeme directamente a <span class="text-gray-600 font-medium">aleixbermudez19@gmail.com</span>
-    </p>
+    <div class="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800 p-6 md:p-12 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl">
+      
+      <form 
+        action="https://formspree.io/f/mlggdwve"
+        method="POST"
+        data-formspree
+        class="space-y-6 md:space-y-8"
+      >
+
+        <input type="hidden" name="_subject" value="Nuevo lead desde aleix.dev">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div class="group space-y-2">
+            <label class="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold ml-1">Nombre</label>
+            <input 
+              type="text" 
+              name="name" 
+              required
+              placeholder="Tu nombre"
+              class="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-white placeholder:text-zinc-700 focus:outline-none focus:border-blue-500/50 transition-all duration-300"
+            />
+          </div>
+
+          <div class="group space-y-2">
+            <label class="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold ml-1">Email</label>
+            <input 
+              type="email" 
+              name="email" 
+              required
+              placeholder="tu@email.com"
+              class="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-white placeholder:text-zinc-700 focus:outline-none focus:border-blue-500/50 transition-all duration-300"
+            />
+          </div>
+        </div>
+
+        <div class="group space-y-2">
+          <label class="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold ml-1">Mensaje</label>
+          <textarea 
+            name="message" 
+            rows="4"
+            required
+            placeholder="Cuéntame sobre tu proyecto..."
+            class="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-white placeholder:text-zinc-700 focus:outline-none focus:border-blue-500/50 transition-all duration-300 resize-none"
+          ></textarea>
+        </div>
+
+        <div class="flex flex-col items-center gap-6 pt-2 md:pt-4">
+          <button type="submit" class="group relative w-full md:w-auto px-12 py-4 bg-white text-black hover:bg-blue-600 hover:text-white font-bold rounded-xl md:rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-95 overflow-hidden shadow-xl">
+            Enviar Propuesta
+          </button>
+
+          <p class="text-zinc-600 text-[10px] uppercase tracking-widest text-center">
+            o escribe a <a href="mailto:aleixbermudez19@gmail.com" class="text-zinc-400 hover:text-blue-500">aleixbermudez19@gmail.com</a>
+          </p>
+        </div>
+
+      </form>
+    </div>
   </div>
 </section>
+
+<script>
+  const form = document.querySelector("[data-formspree]");
+  const toast = document.getElementById("toast");
+  const toastText = document.getElementById("toast-text");
+
+  function showToast(message, error = false) {
+    toastText.textContent = message;
+    toast.firstElementChild.classList.toggle("border-red-500", error);
+    toast.firstElementChild.classList.toggle("text-red-400", error);
+    toast.classList.remove("hidden");
+
+    setTimeout(() => {
+      toast.classList.add("hidden");
+    }, 3500);
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const res = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    });
+
+    if (res.ok) {
+      form.reset();
+      showToast("Mensaje enviado. Te responderé en breve.");
+    } else {
+      showToast("No se pudo enviar. Inténtalo otra vez.", true);
+    }
+  });
+</script>
+
